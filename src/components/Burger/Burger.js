@@ -14,23 +14,14 @@ const burger = (props) => {
     }).reduce((arr, el)=>{
         return arr.concat(el)
     }, []);
-    if(transformedIngredients.length==0){
+    if(transformedIngredients.length===0){
         transformedIngredients = <p>Please start adding ingredients !</p>
     }
-    console.log(transformedIngredients)
     return(
         <div className={classes.Burger}>
             <BurgerIngredient type='bread-top'/>
             {transformedIngredients}
-            <BurgerIngredient type='bread-bottom'/>
-            {/* <h1>Add Ingredients</h1> */}
-            <ButtonGroup name = 'Cheese' variant="contained" color="primary" aria-label="contained primary button group">
-                <Button onClick={props.addCheese}>Cheese</Button>
-                <Button onClick={props.addMeat}>Meat</Button>
-                <Button onClick={props.addSalad}>Salad</Button>
-                <Button onClick={props.addBacon}>Bacon</Button>
-            </ButtonGroup>   
-                        
+            <BurgerIngredient type='bread-bottom'/>                        
         </div>
     )
 };
