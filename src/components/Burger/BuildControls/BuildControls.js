@@ -25,7 +25,6 @@ const buildControls = props => (
       ></BuildControl>
     ))}
     <Button 
-      color='white'
       className={classes.OrderButton} 
       disabled={!props.purchasable} 
       onClick={props.purchasing}>
