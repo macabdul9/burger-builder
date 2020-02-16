@@ -1,21 +1,17 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-// import ButtonGroup from '@material-ui/core/ButtonGroup';
 
-import classes from './BuildControl.module.css'
+import classes from './BuildControl.module.css';
 
 const buildControl = (props) => (
     <div className={classes.BuildControl}>
         <div className={classes.Label}>{props.label}</div>
-        <Button 
-            className={classes.More} 
-            onClick={props.add}
-        >Add</Button>
-        <Button 
+        <button 
             className={classes.Less} 
-            onClick={props.remove}
-            disabled={props.disabled}
-             >Remove</Button>
+            onClick={props.removed} 
+            disabled={props.disabled}>Less</button>
+        <button 
+            className={classes.More} 
+            onClick={props.added}>More</button>
     </div>
 );
 
