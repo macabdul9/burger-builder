@@ -9,7 +9,7 @@ import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import * as orderBurgerActions from '../../../store/actions/index';
 class ContactData extends Component {
     
-    initialize = (elementType, type, placeholder) => {
+    initializeFormInput = (elementType, type, placeholder) => {
         return  {
             elementType:elementType,
             elementConfig:{
@@ -28,11 +28,11 @@ class ContactData extends Component {
     state = {
 
         orderForm: {
-            name:this.initialize('input', 'text', 'Name'),
-            street: this.initialize('input', 'text', 'Street'),
-            zipCode: this.initialize('input', 'text', 'Zip Code'),
-            country:this.initialize('input', 'text', 'country'),
-            email: this.initialize('input', 'email', 'Email'),
+            name:this.initializeFormInput('input', 'text', 'Name'),
+            street: this.initializeFormInput('input', 'text', 'Street'),
+            zipCode: this.initializeFormInput('input', 'text', 'Zip Code'),
+            country:this.initializeFormInput('input', 'text', 'country'),
+            email: this.initializeFormInput('input', 'email', 'Email'),
             deliveryMethod:{
                 elementType:'select',
                 elementConfig:{
