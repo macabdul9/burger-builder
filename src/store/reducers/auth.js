@@ -11,7 +11,7 @@ const initialState = {
 
 export const authSuccess = (state, action) => {
     return updateObject(state, {
-        token:action.idToken,
+        token:action.id,
         userId:action.userId,
         error:null,
         loading:false

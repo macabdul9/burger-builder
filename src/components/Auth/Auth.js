@@ -7,6 +7,8 @@ import classes from './Auth.module.css';
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
 import Spinner from '../UI/Spinner/Spinner';
+import { ButtonGroup } from '@material-ui/core';
+import {Button as MaterialButton} from '@material-ui/core';
 
 
 
@@ -93,11 +95,11 @@ class Auth extends Component {
         event.preventDefault();
         this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignUp);
     }
-    switchSwitchAuthModeHandler = () =>{
-        console.log(this.state.isSignUp)
-        this.setState(prevState =>{
-            return {isSignUp:!prevState.isSignUp};
-        });
+    signUpHandler = () =>{
+        this.setState({isSignUp:true});
+    }
+    singInHandler = () => {
+        this.setState({isSignUp:false});
     }
     render() {
         const formElementsArray = [];
@@ -124,9 +126,9 @@ class Auth extends Component {
         }
         let errorMessage = null;
         if(this.props.error){
-            errorMessage = <p>{this.props.message}</p>;
+            errorMessage = <p>{this.props.error.message}</p>;
         }
-        console.log('Auth.js ', errorMessage);
+        // console.log('Auth.js ', errorMessage);
         return (
             <div className={classes.Auth} >
                 {errorMessage}
@@ -134,7 +136,11 @@ class Auth extends Component {
                     {form}
                     <Button btnType='Success'>Submit</Button>
                 </form>
-                <Button btnType='Danger' clicked={this.switchSwitchAuthModeHandler}>{this.state.isSignUp ? 'SIGN-IN' : 'SIGN-UP'}</Button>
+                {/* <Button btnType='Danger' clicked={this.switchSwitchAuthModeHandler}>{this.state.isSignUp ? 'SIGN-IN' : 'SIGN-UP'}</Button> */}
+                <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
+                    <MaterialButton disabled={!this.state.isSignUp} onClick={this.singInHandler} >Sing-in</MaterialButton>
+                    <MaterialButton disabled={this.state.isSignUp} onClick={this.signUpHandler} >Sign-up</MaterialButton>
+                </ButtonGroup>
             </div>
         )
     }
