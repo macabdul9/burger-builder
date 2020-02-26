@@ -4,7 +4,7 @@ import ContactData from './ContactData/ContactData';
 import { Route, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 
-import * as actions from '../../store/actions/index.js';
+// import * as actions from '../../store/actions/index.js';
 
 class Checkout extends Component {
 

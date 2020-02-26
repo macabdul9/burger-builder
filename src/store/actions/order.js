@@ -42,7 +42,7 @@ export const purchaseInit = () => {
     }
 };
 
-export const fetchOrderr = () => {
+export const fetchOrder = () => {
   return {
     
   }
@@ -50,7 +50,7 @@ export const fetchOrderr = () => {
 
 export const fetchOrderStart = () => {
   return {
-    type:actionTypes.fetchOrderStart,
+    type:actionTypes.FETCH_ORDER_START,
     
   } 
 };
