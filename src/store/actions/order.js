@@ -1,6 +1,11 @@
 import * as actionTypes from "./actionTypes";
 import axios from '../../axios-orders';
 
+export const purchaseInit = () => {
+  return {
+      type: actionTypes.PURCHASE_INIT
+  };
+};
 export const purchaseBurgerSuccess = (id, orderData) => {
   return {
     type: actionTypes.PURCHASE_BURGER_SUCCESS,
@@ -36,6 +41,7 @@ export const purchaseBurger = (orderData) => {
     }
 };
 
+<<<<<<< HEAD
 export const purchaseInit = () => {
     return {
         type:actionTypes.PURCHASE_INIT
@@ -47,6 +53,8 @@ export const fetchOrder = () => {
     
   }
 }
+=======
+>>>>>>> with-redux
 
 export const fetchOrderStart = () => {
   return {
@@ -67,6 +75,24 @@ export const fetchOrderFail = (error) => {
     error:error
   }
 };
+
+
+export const fetchOrders = () => {
+  return dispatch => {
+      dispatch(fetchOrderStart());
+      axios.get('/orders.json').then(res =>{
+        let orders = [];
+        for(let key in res.data){
+            orders.push({
+                ...res.data[key],
+                  id:key});
+        }
+        dispatch(fetchOrderSuccess(orders));
+        }).catch(error=>{
+            dispatch(fetchOrderFail(error));
+        });
+  }
+}
 
 
 
