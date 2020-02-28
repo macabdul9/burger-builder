@@ -7,10 +7,10 @@ export const authStart = () => {
     }
 };
 
-export const authSuccess = (token, userId) => {
+export const authSuccess = (idToken, userId) => {
     return {
         type:actionTypes.AUTH_SUCCESS,
-        idToken:token,
+        idToken:idToken,
         userId:userId
     }
 };
@@ -20,6 +20,23 @@ export const authFail = (error) => {
         type:actionTypes.AUTH_FAIL,
         error:error
     }
+};
+
+export const logout = () => {
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('expirationDate');
+    // localStorage.removeItem('userId');
+    return {
+        type: actionTypes.AUTH_LOGOUT
+    };
+};
+
+export const checkAuthTimeout = (expirationTime) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(logout());
+        }, expirationTime * 1000);
+    };
 };
 
 export const auth = (email, password, isSignUp) => {
@@ -37,8 +54,9 @@ export const auth = (email, password, isSignUp) => {
         }
         axios.post(url, authData)
         .then(response => {
-            // console.log(response);
+            console.log('auth.js', response);
             dispatch(authSuccess(response.data.idToken, response.data.localId));
+            dispatch(checkAuthTimeout(response.data.expiresIn))
         })
         .catch(error => {
             // console.log('auth.js ', error.response.data.error);
@@ -47,5 +65,11 @@ export const auth = (email, password, isSignUp) => {
     }
 };
 
+export const setAuthRedirectPath = (path) => {
+    return {
+        type:actionTypes.SET_AUTH_REDIRECT_PATH,
+        path:path
+    }
+};
 
 
