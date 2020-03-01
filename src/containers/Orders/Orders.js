@@ -23,9 +23,7 @@ class Orders extends Component {
             price={order.price}/>
         ))
     }
-    return (<div>
-            {orders}
-            </div>);
+    return (<div> {orders} </div>);
   }
 }
 
@@ -34,6 +32,7 @@ const mapStateToProps = state => {
         orders: state.order.orders,
         loading:state.order.loading,
         token:state.auth.token
+        // userId:state.auth.userId
     }
 }
 const mapDispatchToProps = dispatch => {
