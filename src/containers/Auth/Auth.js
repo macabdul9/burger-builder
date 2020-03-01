@@ -161,6 +161,11 @@ class Auth extends Component {
     }
 };
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> with-redux
 const mapStateToProps = state => {
     return {
         loading:state.auth.loading,

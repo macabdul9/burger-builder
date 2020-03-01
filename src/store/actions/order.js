@@ -41,6 +41,20 @@ export const purchaseBurger = (token, orderData) => {
     }
 };
 
+<<<<<<< HEAD
+export const purchaseInit = () => {
+    return {
+        type:actionTypes.PURCHASE_INIT
+    }
+};
+
+export const fetchOrder = () => {
+  return {
+    
+  }
+}
+=======
+>>>>>>> with-redux
 
 export const fetchOrderStart = () => {
   return {
